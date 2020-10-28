@@ -3,4 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "web-dev"
   config.vm.provision "shell" , path: "provision.sh"
   config.vm.network :forwarded_port, guest: 80, host: 8080, id: "nginx"
+  config.vm.synced_folder "www/", "/Vagrant_www"
+  config.vm.synced_folder "sites-enabled/", "/Vagrant_sites-enabled"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
 end
